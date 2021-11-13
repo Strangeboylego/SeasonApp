@@ -1,4 +1,4 @@
-package com.example.oleh.seasonapp;
+package com.example.oleh.seasonapp.auth;
 
 public interface UserService {
 

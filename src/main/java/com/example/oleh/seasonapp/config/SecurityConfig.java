@@ -14,7 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 
-import com.example.oleh.seasonapp.AuthFilter;
+import com.example.oleh.seasonapp.auth.AuthFilter;
 
 import lombok.RequiredArgsConstructor;
 

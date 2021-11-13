@@ -1,10 +1,10 @@
-package com.example.oleh.seasonapp.impl;
+package com.example.oleh.seasonapp.auth.impl;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.example.oleh.seasonapp.AppUser;
-import com.example.oleh.seasonapp.UserDAO;
+import com.example.oleh.seasonapp.auth.AppUser;
+import com.example.oleh.seasonapp.auth.UserDAO;
 
 import lombok.RequiredArgsConstructor;
 

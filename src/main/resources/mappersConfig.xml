@@ -16,7 +16,7 @@
  <typeAliases>
   <typeAlias
    alias="AppUser"
-   type="com.example.oleh.seasonapp.AppUser"/>
+   type="com.example.oleh.seasonapp.auth.AppUser"/>
  </typeAliases>
 
  <mappers>

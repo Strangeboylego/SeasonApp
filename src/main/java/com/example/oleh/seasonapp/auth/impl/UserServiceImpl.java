@@ -1,4 +1,4 @@
-package com.example.oleh.seasonapp.impl;
+package com.example.oleh.seasonapp.auth.impl;
 
 import java.util.Collections;
 
@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.oleh.seasonapp.AppUser;
-import com.example.oleh.seasonapp.UserService;
+import com.example.oleh.seasonapp.auth.AppUser;
+import com.example.oleh.seasonapp.auth.UserService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
