@@ -1,0 +1,100 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-image: url("../../logo.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: sans-serif;
+
+}
+.panel{
+  border: 0px;
+  background: rgba(0, 0, 0, 0.1);
+  color: #ffff;
+  text-align: center;
+  padding-top: 15px;
+  position: relative;
+  transition: 1s;
+}
+
+h4{
+  margin: 0;
+  padding: 0;
+}
+span{
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background: rgba(100, 100, 100, 0.5);
+  display: inline-block;
+  text-align: center;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  margin-left: 10px;
+  transition: 1s;
+  -webkit-box-shadow:5px -5px 7px rgba(255,255,255,0.3);
+  box-shadow:5px -5px 7px rgba(255,255,255,0.3);
+}
+
+.panel:hover{
+  background: rgba(0, 0, 0, 0.7);
+}
+.form-control{
+  border: 0px;
+  background: rgba(50, 50, 50, 0.5);
+  color: #fff;
+}
+span:hover{
+  background: rgba(200, 200, 200, 0.7);
+}
+.alert-success{
+  border: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  color: rgb(200,200,200);
+}
+.btn{
+  color: rgb(100,100,100);
+  background: rgba(50, 50, 50, 0.3);
+}
+.btn:hover{
+  color: rgb(200,200,200);
+}
+.navbar.navbar-default{
+
+	background-color: rgba(10,10,10,0.1);
+  border: 0px;
+	padding-right:22px;
+}
+
+
+.navbar-default .navbar-brand{
+	color: white;
+	font-size:200%;
+	font-family: 'Varela Round', sans-serif;
+	padding-left: 30px;
+  transition: 1s;
+
+
+}
+.navbar-toggle{
+	margin-right:  0px;
+}
+.navbar-default .navbar-nav > li > a  {
+    color: rgb(200,200,200);;
+    padding-right: 35px;
+}
+
+.navbar-form{
+	padding:0px;
+}
+.navbar-default.navbar-brand:hover{
+  color: white;
+}
+.navbar-default .navbar-nav > li > a:hover{
+  color: white;
+
+}
