@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="SeriesMapper">
+
+ <resultMap id="SeriesBeanResult" type="SeriesBean">
+  <id property="id" column="id"/>
+  <result property="seasonNumber" column="season_number"/>
+  <result property="number" column="series_number"/>
+  <result property="states" column="states" javaType="com.example.oleh.seasonapp.business.SeriesState"/>
+ </resultMap>
+
+
+ <select id="getBySeasonNumber" resultMap="SeriesBeanResult">
+  SELECT *
+  FROM series
+  WHERE season_number = #{number}
+  ORDER BY series_number
+ </select>
+
+ <select id="getByState" resultMap="SeriesBeanResult">
+  SELECT *
+  FROM series
+  WHERE #{state, javaType=com.example.oleh.seasonapp.business.SeriesState} = ANY (states)
+  ORDER BY season_number, series_number
+ </select>
+
+ <update id="updateState" parameterType="SeriesBean">
+  UPDATE series
+  SET states = #{states, typeHandler=com.example.oleh.seasonapp.handlers.EnumTypeHandler}
+  WHERE season_number = #{seasonNumber}
+    AND series_number = #{number}
+ </update>
+
+
+</mapper>

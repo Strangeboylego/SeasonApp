@@ -17,9 +17,21 @@
   <typeAlias
    alias="AppUser"
    type="com.example.oleh.seasonapp.auth.AppUser"/>
+  <typeAlias
+   alias="SeasonBean"
+   type="com.example.oleh.seasonapp.business.impl.season.SeasonBean"/>
+  <typeAlias
+   alias="SeriesBean"
+   type="com.example.oleh.seasonapp.business.impl.series.SeriesBean"/>
  </typeAliases>
+
+ <typeHandlers>
+ <typeHandler handler="com.example.oleh.seasonapp.handlers.EnumTypeHandler" javaType="com.example.oleh.seasonapp.business.SeriesState"/>
+ </typeHandlers>
 
  <mappers>
   <mapper resource="mapper/UserMapper.xml"/>
+  <mapper resource="mapper/SeasonMapper.xml"/>
+  <mapper resource="mapper/SeriesMapper.xml"/>
  </mappers>
 </configuration>

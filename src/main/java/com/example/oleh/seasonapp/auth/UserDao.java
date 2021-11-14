@@ -1,6 +1,6 @@
 package com.example.oleh.seasonapp.auth;
 
-public interface UserDAO {
+public interface UserDao {
 
     AppUser findByUsername(String username);
 

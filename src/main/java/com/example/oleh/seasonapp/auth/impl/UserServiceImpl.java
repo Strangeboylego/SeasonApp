@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService, UserDetailsService {
 
-  private final UserDAOImpl userDAO;
+  private final UserDaoImpl userDAO;
   private final BCryptPasswordEncoder passwordEncoder;
 
   @Override

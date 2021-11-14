@@ -17,7 +17,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -77,11 +76,10 @@ public class AuthFilter extends UsernamePasswordAuthenticationFilter {
       FilterChain chain, Authentication authentication) {
 
     final User user = (User) authentication.getPrincipal();
-    final Algorithm algorithm = Algorithm.HMAC256("секрет".getBytes());
 
     final String token = JWT.create().withSubject(user.getUsername())
         .withExpiresAt(new Date(System.currentTimeMillis() + 5 * 60 * 1000))
-        .withIssuer(request.getRequestURL().toString()).sign(algorithm);
+        .withIssuer(request.getRequestURL().toString()).sign(Secret.ALGORITHM);
     response.setHeader("token", token);
   }
 }

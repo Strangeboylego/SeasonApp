@@ -13,8 +13,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.example.oleh.seasonapp.auth.AuthFilter;
+import com.example.oleh.seasonapp.auth.AuthorizationFilter;
 
 import lombok.RequiredArgsConstructor;
 
@@ -35,8 +37,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http.csrf().disable();
     http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-    http.authorizeRequests().anyRequest().permitAll();
+    http.authorizeRequests().antMatchers("/login/**", "/users/**", "/").permitAll();
+    http.authorizeRequests().antMatchers("/seasons/**", "/series/**").authenticated();
     http.addFilter(new AuthFilter(authenticationManager()));
+    http.addFilterBefore(new AuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
   }
 
   @Bean

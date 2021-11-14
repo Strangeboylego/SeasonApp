@@ -55,7 +55,7 @@
       const password = $('#password');
 
       if (loginName.val() && password.val()) {
-        $.ajax({
+        var result =  $.ajax({
           url: '/login',
           data: JSON.stringify({
             "username":  loginName.val(),
@@ -64,7 +64,8 @@
           cache: false,
           type: "POST",
           success: function(data) {
-            top.location.href=data.toString();
+            window.localStorage.setItem('token', result.getResponseHeader('token'));
+            top.location.href='season.html';
           },
           error: function(){
             alert('Bad credentials');
