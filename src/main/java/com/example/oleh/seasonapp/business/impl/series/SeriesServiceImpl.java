@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class SeriesServiceImpl implements SeriesService {
 
-  private final SeriesDaoImpl seriesDAO;
+  private final SeriesDao seriesDAO;
 
   @Override
   public List<Series> findByState(SeriesState seriesState) {

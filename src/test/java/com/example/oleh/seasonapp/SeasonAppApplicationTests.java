@@ -1,10 +1,9 @@
 package com.example.oleh.seasonapp;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class SeasonAppApplicationTests {
+
+class SeasonAppApplicationTests extends BaseMvcTest {
 
     @Test
     void contextLoads() {

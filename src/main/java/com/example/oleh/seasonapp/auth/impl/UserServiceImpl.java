@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.oleh.seasonapp.auth.AppUser;
+import com.example.oleh.seasonapp.auth.UserDao;
 import com.example.oleh.seasonapp.auth.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService, UserDetailsService {
 
-  private final UserDaoImpl userDAO;
+  private final UserDao userDAO;
   private final BCryptPasswordEncoder passwordEncoder;
 
   @Override

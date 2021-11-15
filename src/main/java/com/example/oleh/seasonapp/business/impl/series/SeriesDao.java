@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
-public class SeriesDaoImpl {
+public class SeriesDao {
 
   private static final String SERIES_MAPPER = "SeriesMapper.";
 

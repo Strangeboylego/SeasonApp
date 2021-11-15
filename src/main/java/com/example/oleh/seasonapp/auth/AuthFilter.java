@@ -23,7 +23,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-
 public class AuthFilter extends UsernamePasswordAuthenticationFilter {
 
   private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
