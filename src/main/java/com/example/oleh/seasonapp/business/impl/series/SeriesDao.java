@@ -1,6 +1,8 @@
 package com.example.oleh.seasonapp.business.impl.series;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -18,8 +20,11 @@ public class SeriesDao {
 
   private final SqlSession sqlSession;
 
-  public Collection<SeriesBean> getByState(SeriesState state) {
-    return sqlSession.selectList(SERIES_MAPPER + "getByState", state);
+  public Collection<SeriesBean> getBySeasonAndState(int seasonNumber, SeriesState state) {
+    Map<String, Object> params = new HashMap<>();
+    params.put("seasonNumber", seasonNumber);
+    params.put("state", state.name());
+    return sqlSession.selectList(SERIES_MAPPER + "getBySeasonAndState", params);
   }
 
   public Collection<SeriesBean> getBySeasonNumber(long seasonNumber) {

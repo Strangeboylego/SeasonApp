@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<project>
+
+ <bannerLeft>
+  <name>${project.name}</name>
+  <width>800px</width>
+ </bannerLeft>
+
+ <custom>
+  <fluidoSkin>
+   <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+  </fluidoSkin>
+ </custom>
+
+ <body>
+  <menu name="Test application for interview">
+   <item href="index.html" name="Home" />
+   <item href="rest-api.html" name="REST API" />
+  </menu>
+ </body>
+</project>
+

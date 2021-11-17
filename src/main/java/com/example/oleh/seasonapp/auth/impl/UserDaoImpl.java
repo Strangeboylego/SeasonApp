@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.oleh.seasonapp.auth.AppUser;
 import com.example.oleh.seasonapp.auth.UserDao;
+import com.example.oleh.seasonapp.exception.UserAlreadyExistsException;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,7 +24,13 @@ public class UserDaoImpl implements UserDao {
 
   @Override
   public AppUser save(AppUser user) {
-    sqlSession.insert(USER_MAPPER + "insert", user);
+    try {
+      sqlSession.insert(USER_MAPPER + "insert", user);
+    } catch (Exception e) {
+      throw new UserAlreadyExistsException(
+          "User with username " + user.getUsername() + " already exists");
+    }
+
     return user;
   }
 }

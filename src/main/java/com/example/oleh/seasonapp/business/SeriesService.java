@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface SeriesService {
 
-  List<Series> findByState(SeriesState seriesState);
+  List<Series> findBySeasonAndState(int seasonNumber, SeriesState seriesState);
 
   List<Series> findBySeasonNumber(int seasonId);
 

@@ -11,7 +11,6 @@
   <result property="states" column="states" javaType="com.example.oleh.seasonapp.business.SeriesState"/>
  </resultMap>
 
-
  <select id="getBySeasonNumber" resultMap="SeriesBeanResult">
   SELECT *
   FROM series
@@ -19,10 +18,12 @@
   ORDER BY series_number
  </select>
 
- <select id="getByState" resultMap="SeriesBeanResult">
+
+ <select id="getBySeasonAndState" resultMap="SeriesBeanResult" parameterType="map">
   SELECT *
   FROM series
-  WHERE #{state, javaType=com.example.oleh.seasonapp.business.SeriesState} = ANY (states)
+  WHERE season_number = #{seasonNumber}
+  AND #{state} = ANY (states)
   ORDER BY season_number, series_number
  </select>
 

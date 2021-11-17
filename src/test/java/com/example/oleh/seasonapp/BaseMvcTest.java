@@ -6,7 +6,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
@@ -50,14 +49,8 @@ public abstract class BaseMvcTest {
   @Autowired
   ObjectMapper objectMapper;
 
-  protected ResultActions prepareGet(String path) throws Exception {
-    return prepareGet(path, Optional.empty());
-  }
 
-  protected ResultActions prepareGet(String path, Optional<String> param) throws Exception {
-    if (param.isPresent()) {
-      path = path + "/" + param.get();
-    }
+  protected ResultActions prepareGet(String path) throws Exception {
     final MockHttpServletRequestBuilder builder = get(path);
     String token = getToken();
     builder.header(AUTH, token);

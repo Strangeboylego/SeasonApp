@@ -72,7 +72,7 @@ public class MvcTestConfiguration implements WebMvcConfigurer {
 
     final List<SeriesBean> seriesBeans = Collections.singletonList(seriesBean);
     when(seriesDao.getBySeasonNumber(3)).thenReturn(seriesBeans);
-    when(seriesDao.getByState(SeriesState.SELECTED)).thenReturn(seriesBeans);
+    when(seriesDao.getBySeasonAndState(3, SeriesState.SELECTED)).thenReturn(seriesBeans);
     when(seriesDao.updateState(any())).thenReturn(1);
 
     return seriesDao;

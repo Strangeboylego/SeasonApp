@@ -13,14 +13,6 @@ import com.example.oleh.seasonapp.BaseMvcTest;
 public class SeriesControllerTest extends BaseMvcTest {
 
   protected static final String SERIES_PATH = "/series";
-  protected static final String SELECTED_PATH = "/selected";
-
-  @Test
-  public void loadBySeasonNumber() throws Exception {
-
-    prepareGet(SERIES_PATH + SELECTED_PATH).andExpect(status().isOk())
-        .andDo(document("{method-name}/"));
-  }
 
   @Test
   public void updateState() throws Exception {

@@ -1,0 +1,53 @@
+= RESTFULL SeasonApp API Specification
+
+:doctype: book
+
+== Login
+
+A `POST` to login in application
+
+operation::user-login[snippets='http-request,http-response']
+
+=== If credentials are not correct:
+
+Will return unauthorized message with status code `401`
+
+== Crete user
+
+A `POST` request to create new user
+
+operation::save-user[snippets='http-request,http-response']
+
+=== If user with this username already exists:
+
+Return status code `400` with message `User with username {username} already exists`
+
+== Get season information
+
+A `GET` request to retrieve season information and its series
+
+operation::load-by-season-number[snippets='http-request,http-response']
+
+=== If season does not exist:
+
+Return status code `400` With message `Season does not exist`.
+
+== Get season information with selected series
+
+A `GET` request to retrieve selected series
+
+operation::load-selected-by-season-number[snippets='http-request,http-response']
+
+=== If season does not exist:
+
+Return status code `400` With message `Season does not exist`.
+
+== Update series state
+
+A `PUT` request to update series state
+
+operation::update-state[snippets='http-request,http-response']
+
+=== If series does not exist
+
+Return status code `400` With message `Series does not exist`.

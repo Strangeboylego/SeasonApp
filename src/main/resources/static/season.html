@@ -11,41 +11,66 @@
     <link rel="stylesheet" href="Styles\css\custom.css">
 
 </head>
-<body onload="load()">
-<div class="navbar">
-    <a>
-        <input type="button" onclick="back()" value="Back"/>
-    </a>
-</div>
-<div class="main">
-    <table id="Process_data" border="1">
-        <head>
-            <tr>
-                <th width="20%">Fleet</th>
-                <th width="5%">Vehicle</th>
-                <th width="10%">Uic</th>
-                <th width="5%">Unit</th>
-                <th width="10%">Value</th>
-                <th width="20%">Signal name</th>
-                <th width="15%">Record time</th>
-                <th width="15%">Import time</th>
-            </tr>
-        </head>
-    </table>
-</div>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header-fluid">
+            <a class="navbar-brand">Movie dr<i class="fa fa-tint" aria-hidden="true"></i>pe</a>
+            <a class="navbar-brand selected">Selected Only:</a>
+            <label class="switch">
+                <input id="test" type="checkbox" autocomplete="off">
+                <span class="slider round" style="height: 25px; width: 56px"></span>
+            </label>
+
+            <button class="logout-button" onclick="logout()">Logout
+                <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+<h1 style="margin-left: 20px">Game Of Thrones</h1>
 
 <script type="application/javascript">
     function load() {
-        console.log(window.localStorage.getItem('token'));
-         var x = $.ajax({
-            url: '/seasons/3',
+        var selected = window.localStorage.getItem('input');
+        var token = window.localStorage.getItem('token');
+        if (token == null) {
+            top.location.href = 'login.html';
+        }
+        const elements = document.getElementsByClassName("series");
+        while (elements.length > 0) {
+            elements[0].parentNode.removeChild(elements[0]);
+        }
+        const h2 = document.getElementsByClassName("marker-h1");
+        while (h2.length > 0) {
+            h2[0].parentNode.removeChild(h2[0]);
+
+        }
+        var u = selected === 'true' ? '/seasons/3/selected' : '/seasons/3';
+
+        var x = $.ajax({
+            url: u,
             cache: false,
             type: "GET",
             headers: {
-                'Authorization': window.localStorage.getItem('token')
+                'Authorization': token
             },
             success: function (response) {
-                alert(x);
+                $("body").append('<h1 class="marker-h1">' + response.name + '</h1>');
+                $.each(response.series, function (idx, elem) {
+                    var s = elem.states
+                    console.log(s);
+                    var selected = false;
+                    if (s.length === 0) {
+                        selected = true;
+                    }
+                    var star = selected? "seriesUnselected" : "seriesSelected"
+                    $("body").append('<div class="series" id="series'
+                        + elem.number + '"><h4 style="color: white">№'
+                        + elem.number + '</h4><button id="' + star + '" class="selected-button" title="Select/Unselect" onclick="changeState('
+                        + elem.id + ',' + elem.seasonNumber + ','
+                        + elem.number+ ',' + selected + ')"></button></div>');
+                });
             },
             error: function () {
                 alert('Bad request');
@@ -53,9 +78,60 @@
         });
     }
 
-    function back() {
-        top.location.href = 'menu.html';
+    function changeState(a,b,c,d) {
+        console.log("here")
+        var token = window.localStorage.getItem('token');
+        if (token == null) {
+            top.location.href = 'login.html';
+        }
+        var state = [];
+        if (d) {
+            state.push("SELECTED")
+        }
+        var x = $.ajax({
+            url: "/series",
+            cache: false,
+            type: "POST",
+            headers: {
+                'Authorization': token
+            },
+            contentType: "application/json",
+            data: JSON.stringify({
+                "id": a,
+                "seasonNumber": b,
+                "number": c,
+                "states": state
+            }),
+            success: function () {
+
+                load();
+            },
+            error: function () {
+                alert('Bad request');
+            }
+        });
     }
+
+    function logout() {
+        window.localStorage.removeItem("token");
+        top.location.href = 'login.html';
+    }
+
+    $(function () {
+        $('#test')
+            .prop('checked', localStorage.input === 'true')
+            .on('change', function () {
+                localStorage.input = this.checked;
+                load();
+                if (this.checked) {
+                    $('.myClass').show(1000); //checked
+                } else {
+                    $('.myClass').hide(1000);
+                }
+            })
+            .trigger('change')
+
+    });
 </script>
 </body>
 </html>

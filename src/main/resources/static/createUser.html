@@ -60,7 +60,7 @@
 
     if (loginName.val() && password.val() && name.val()) {
       $.ajax({
-        url: '/user',
+        url: '/users',
         data: JSON.stringify({
           "name": name.val(),
           "username":  loginName.val(),
@@ -68,6 +68,7 @@
         }),
         cache: false,
         type: "POST",
+        contentType: "application/json",
         success: function() {
           top.location.href='login.html';
         },

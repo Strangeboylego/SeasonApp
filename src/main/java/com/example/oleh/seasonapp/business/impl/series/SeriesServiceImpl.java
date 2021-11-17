@@ -21,8 +21,9 @@ public class SeriesServiceImpl implements SeriesService {
   private final SeriesDao seriesDAO;
 
   @Override
-  public List<Series> findByState(SeriesState seriesState) {
-    final Collection<SeriesBean> seriesBeans = seriesDAO.getByState(seriesState);
+  public List<Series> findBySeasonAndState(int seasonNumber, SeriesState seriesState) {
+    final Collection<SeriesBean> seriesBeans = seriesDAO.getBySeasonAndState(seasonNumber,
+        seriesState);
     return seriesBeans.stream().map(SeriesImpl::new).collect(Collectors.toList());
   }
 
